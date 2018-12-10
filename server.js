@@ -12,11 +12,10 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 
-
+//DETTA ÄR DET DU BEHÖVER BRY DIG OM
 //HÄR ÄR DIN DATABAS JUST NU
 var posts = ["Hej jag heter elin", "Hej jag heter sam"];
-// GÖR OM TILL JSON OBJEKT FÖR ATT SKICKA ÖVER
-var data = JSON.stringify(posts);
+
 
 //skicka index.html om någon frågar efter /
 app.get('/', function(req, res) {
