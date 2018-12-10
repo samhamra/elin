@@ -1,15 +1,17 @@
 var path = require('path'); 
 const express = require('express') //webbserver
 const bodyParser = require("body-parser"); //för att hämta ut info från post requesten
-const fs = require('fs') // filsystem
+const fs = require('fs') // filsystem om du vill spara i fil istället
 const app = express()
 const port = 3000
-//för att skicka med html och javascriptfilerna till klienten
+
 app.use(express.static('client'))
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
+
+
 
 //HÄR ÄR DIN DATABAS JUST NU
 var posts = ["Hej jag heter elin", "Hej jag heter sam"];
