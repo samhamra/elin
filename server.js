@@ -1,4 +1,4 @@
-var path = require('path'); 
+var path = require('path');
 const express = require('express') //webbserver
 const bodyParser = require("body-parser"); //för att hämta ut info från post requesten
 const fs = require('fs') // filsystem om du vill spara i fil istället
@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 
 //DETTA ÄR DET DU BEHÖVER BRY DIG OM
 //HÄR ÄR DIN DATABAS JUST NU
-var posts = ["Hej jag heter elin", "Hej jag heter sam"];
+var posts = [];
 
 
 //skicka index.html om någon frågar efter /
@@ -30,7 +30,11 @@ app.get('/getPosts', function(req, res) {
 //När någon försöker skicka en post till servern körs detta
 app.post('/sendPost', function(req, res) {
   //titta i terminalen vad som skickades, hämta ut rätt info och stoppa in i din databas(arrayen)
-  console.log(req.body)
+  console.log(req.body.data);
+  posts.push(req.body.data);
+})
+app.get('/elin', function(req, res) {
+  res.send("Hej elin");
 })
 
 
