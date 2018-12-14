@@ -14,37 +14,41 @@ function getData() {
     var response = request.response;
     //Servern skickade över arrayen som en string, så nu måste vi parsa den tillbaks till array(objekt)
     var data = JSON.parse(response);
-    console.log(data);
-    console.log(typeof(data));
-    if (data.toString() === "") {
+    // console.log(data);
+    if (data.length === 0) {
       //do nothing
     } else {
       document.getElementById("data").innerHTML = "";
       for(var i = 0; i < data.length; i++){
         console.log(data[i]);
+        var author = data[i].author;
+        var textInput = data[i].textInput;
         var createPelement = document.createElement("p");
-        createPelement.innerHTML = data[i];
+        createPelement.innerHTML = "Author: " + author + " <br> " + textInput ;
         document.getElementById("data").append(createPelement);
       }
     }
   }
 }
 
-function elinFunc(item, index) {
- var hejsan = document.getElementById("textInput");
- console.log(hejsan.value);
- sendData(hejsan.value);
- location.reload()
+function elinFunc() {
+  var input = document.querySelectorAll("#textInput, #author");
+  var author = input[0].value;
+  var textInput = input[1].value;
+  sendData(author, textInput);
+  location.reload()
 }
 
 //SKICKA DATA
 //Samma sak, men nu gör vi en post request till servern på /sendPost och skickar med ett objekt
-function sendData(tjo) {
+function sendData(tjo, hej) {
+  console.log("från sendData", tjo, hej);
 var request2 = new XMLHttpRequest();
 request2.open("POST", '/sendPost');
 request2.setRequestHeader("Content-Type", "application/json");
 //VI KAN BARA SKICKA STRINGS, SÅ GÖR OM OBJEKTET TILL EN STRING, OCH SKICKA ÖVER STRINGEN
-// HÄMTA RÄTT INFO och skicka till SERVERN
-var post = {data: tjo};
+//HÄMTA RÄTT INFO och skicka till SERVERN
+var post = {author: tjo, textInput: hej};
+//Här ska author också skickas
 request2.send(JSON.stringify(post));
 }

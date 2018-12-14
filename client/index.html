@@ -11,6 +11,11 @@
       <h1>Elin's gästbok</h1>
       <div class="input">
         <h3>Skriv här </h3>
+        <input class="author"
+          id="author"
+          type="text"
+          name="post"
+          placeholder="Ditt namn"/>
         <textarea class="textField"
           id="textInput"
           type="text"
@@ -19,12 +24,12 @@
         <input class="submitButton"
           type="submit"
           value="Submit"
-          onclick="elinFunc(data)"/>
+          onclick="elinFunc()"/>
       </div>
 
       <div class="output">
         <h1>Se vad du har skrivit här </h1>
-        <p id="data">Gästboken är tom ¯\_(ツ)_/¯ </p>
+        <div id="data">Gästboken är tom ¯\_(ツ)_/¯ </div>
       </div>
     </div>
   </body>
