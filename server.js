@@ -30,8 +30,8 @@ app.get('/getPosts', function(req, res) {
 //När någon försöker skicka en post till servern körs detta
 app.post('/sendPost', function(req, res) {
   //titta i terminalen vad som skickades, hämta ut rätt info och stoppa in i din databas(arrayen)
-  console.log(req.body.data);
-  posts.push(req.body.data);
+  console.log(req.body);
+  posts.push(req.body);
 })
 app.get('/elin', function(req, res) {
   res.send("Hej elin");
