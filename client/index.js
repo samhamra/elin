@@ -14,7 +14,7 @@ function getData() {
     var response = request.response;
     //Servern skickade över arrayen som en string, så nu måste vi parsa den tillbaks till array(objekt)
     var data = JSON.parse(response);
-    // console.log(data);
+
     if (data.length === 0) {
       //do nothing
     } else {
